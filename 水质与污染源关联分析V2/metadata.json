@@ -1,0 +1,79 @@
+{
+  "predict": {
+    "label": "推理模型",
+    "model_definition": {
+      "execute_path": "source /home/miniconda/bin/activate earth && cd /code && /home/miniconda/envs/earth/bin/python preprocess_water_tracing.py",
+      "runtime_environment": {
+        "dependency_image": {
+          "tag": "v1",
+          "name": "10.102.34.11:1180/server/air_qgis",
+          "type": "docker"
+        }
+      }
+    },
+    "model_input_parameters": [
+      {
+        "key": "input_path",
+        "type": "file",
+        "defaultValue": "server/Water_pollution_tracing/Input"
+      },
+      {
+        "key": "output_path",
+        "type": "file",
+        "defaultValue": "Water_pollution_tracing/Output"
+      },
+	{
+        "key": "Province",
+        "type": "str",
+        "defaultValue": "山东省"
+      },
+	{
+        "key": "City",
+        "type": "str",
+        "defaultValue": "济宁市"
+      },
+	{
+        "key": "Institution",
+        "type": "str",
+        "defaultValue": "山东大学"
+      },
+      {
+        "key": "Site_Name",
+        "type": "str",
+        "defaultValue": "105公路桥"
+      },
+      {
+        "key": "WQParams",
+        "type": "str",
+        "defaultValue": "溶解氧"
+      },
+      {
+        "key": "model_name1",
+        "type": "str",
+        "defaultValue": "IsolationForest"
+      },
+      {
+        "key": "model_name2",
+        "type": "str",
+        "defaultValue": "XGBoost"
+      }
+    ]
+  },
+  "model_mode": [
+    "predict"
+  ],
+  "model_name": "WaterPollutionTracingAnalysisV2",
+  "model_type": "script",
+  "model_title": "水质与污染源关联分析V2",
+  "model_language": "python",
+  "resource_config": {
+    "cpu": 2,
+    "gpu": 1,
+    "memory": "4GB"
+  },
+  "model_description": "基于机器学习的水质与污染源关联分析模型通过收集水质监测数据和潜在污染源信息利用算法如随机森林、XGBoost 或支持向量机，建立水质指标与源之间的关联关系。模型通过特征选择和数据处理，识别影响水质的关键因素，进而预测和评估污染源对水质的影响。这种分析不仅有助于理解水质变化的原因，还能为水资源管理和污染控制提供科学依据。",
+  "parameter_delivery": "python_style",
+  "environment_variables": {
+    "AI_DATASET": "http://114.116.226.27:30094/pie_training_dataset/"
+  }
+}

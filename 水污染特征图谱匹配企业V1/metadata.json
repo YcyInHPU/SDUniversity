@@ -1,0 +1,74 @@
+{
+  "predict": {
+    "label": "推理模型",
+    "model_definition": {
+      "execute_path": "source /home/miniconda/bin/activate earth && cd /code && /home/miniconda/envs/earth/bin/python preprocess_enterprise_characteristic.py",
+      "runtime_environment": {
+        "dependency_image": {
+          "tag": "v1",
+          "name": "10.102.34.11:1180/server/air_qgis",
+          "type": "docker"
+        }
+      }
+    },
+    "model_input_parameters": [
+      {
+        "key": "input_path",
+        "type": "file",
+        "defaultValue": "4水环境大数据分析/1水污染特征图谱匹配/Input"
+      },
+      {
+        "key": "output_path",
+        "type": "file",
+        "defaultValue": "4水环境大数据分析/1水污染特征图谱匹配/Output"
+      },
+	{
+        "key": "Province",
+        "type": "str",
+        "defaultValue": "山东省"
+      },
+	{
+        "key": "City",
+        "type": "str",
+        "defaultValue": "济南市"
+      },
+	{
+        "key": "Basin2",
+        "type": "str",
+        "defaultValue": "沂沭泗流域"
+      },
+	{
+        "key": "Basin3",
+        "type": "str",
+        "defaultValue": "湖西区"
+      },
+      {
+        "key": "Enterprise",
+        "type": "str",
+        "defaultValue": "养殖"
+      },
+      {
+        "key": "Institution",
+        "type": "str",
+        "defaultValue": "山东大学"
+      }
+     ]
+  },
+  "model_mode": [
+    "predict"
+  ],
+  "model_name": "EnterprisePollutionCharacteristic",
+  "model_type": "script",
+  "model_title": "企业排污特征图谱",
+  "model_language": "python",
+  "resource_config": {
+    "cpu": 2,
+    "gpu": 1,
+    "memory": "4GB"
+  },
+  "model_description": "企业排污特征图谱是一种通过对企业排放污染物的种类、浓度、时间分布、排放方式等多维度信息进行综合分析与可视化呈现，从而直观反映企业排污状况的独特图示表达，可用于排污监测、环境管理与污染溯源等多方面工作。",
+  "parameter_delivery": "python_style",
+  "environment_variables": {
+    "AI_DATASET": "http://114.116.226.27:30094/pie_training_dataset/"
+  }
+}

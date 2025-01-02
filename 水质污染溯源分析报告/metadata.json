@@ -1,0 +1,79 @@
+{
+  "predict": {
+    "label": "推理模型",
+    "model_definition": {
+      "execute_path": "source /home/miniconda/bin/activate earth && cd /code && /home/miniconda/envs/earth/bin/python preprocess_water_tracing.py",
+      "runtime_environment": {
+        "dependency_image": {
+          "tag": "v1",
+          "name": "10.102.34.11:1180/server/air_qgis",
+          "type": "docker"
+        }
+      }
+    },
+    "model_input_parameters": [
+      {
+        "key": "input_path",
+        "type": "file",
+        "defaultValue": "4水环境大数据分析/2水质污染源关联分析/Input"
+      },
+      {
+        "key": "output_path",
+        "type": "file",
+        "defaultValue": "4水环境大数据分析/2水质污染源关联分析/Output"
+      },
+	{
+        "key": "Province",
+        "type": "str",
+        "defaultValue": "山东省"
+      },
+	{
+        "key": "City",
+        "type": "str",
+        "defaultValue": "济宁市"
+      },
+	{
+        "key": "Institution",
+        "type": "str",
+        "defaultValue": "山东大学"
+      },
+      {
+        "key": "Site_Name",
+        "type": "str",
+        "defaultValue": "105公路桥"
+      },
+      {
+        "key": "WQParams",
+        "type": "str",
+        "defaultValue": "氨氮"
+      },
+      {
+        "key": "model_name1",
+        "type": "str",
+        "defaultValue": "IsolationForest"
+      },
+      {
+        "key": "model_name2",
+        "type": "str",
+        "defaultValue": "XGBoost"
+      }
+    ]
+  },
+  "model_mode": [
+    "predict"
+  ],
+  "model_name": "AnalysisReportOnTheTracingOfWaterPollutionSources",
+  "model_type": "script",
+  "model_title": "水质污染溯源分析报告",
+  "model_language": "python",
+  "resource_config": {
+    "cpu": 2,
+    "gpu": 1,
+    "memory": "4GB"
+  },
+  "model_description": "企业排污特征图谱如同企业污染 “档案”。它整合剖析数据而成，横坐标为时间，呈现排污量随时间波动，如旺季排污量升、淡季回落；纵坐标是污染物种类与浓度，标记重金属、有机污染物等排放水平。从图谱走势、数据点能洞察企业排污规律，像化工企业特定时段苯系物浓度变化、印染企业废水特征污染物波动，为环境监管提供依据，是守护生态的 “利器”。",
+  "parameter_delivery": "python_style",
+  "environment_variables": {
+    "AI_DATASET": "http://114.116.226.27:30094/pie_training_dataset/"
+  }
+}

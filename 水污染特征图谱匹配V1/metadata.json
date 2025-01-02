@@ -1,0 +1,74 @@
+{
+  "predict": {
+    "label": "推理模型",
+    "model_definition": {
+      "execute_path": "source /home/miniconda/bin/activate earth && cd /code && /home/miniconda/envs/earth/bin/python preprocess_water_characteristic.py",
+      "runtime_environment": {
+        "dependency_image": {
+          "tag": "v1",
+          "name": "10.102.34.11:1180/server/air_qgis",
+          "type": "docker"
+        }
+      }
+    },
+    "model_input_parameters": [
+      {
+        "key": "input_path",
+        "type": "file",
+        "defaultValue": "4水环境大数据分析/1水污染特征图谱匹配/Input"
+      },
+      {
+        "key": "output_path",
+        "type": "file",
+        "defaultValue": "4水环境大数据分析/1水污染特征图谱匹配/Output"
+      },
+	{
+        "key": "Province",
+        "type": "str",
+        "defaultValue": "山东省"
+      },
+	{
+        "key": "City",
+        "type": "str",
+        "defaultValue": "济南市"
+      },
+	{
+        "key": "Basin2",
+        "type": "str",
+        "defaultValue": "沂沭泗流域"
+      },
+	{
+        "key": "Basin3",
+        "type": "str",
+        "defaultValue": "湖西区"
+      },
+      {
+        "key": "WQParams",
+        "type": "str",
+        "defaultValue": "有色可溶性有机物CDOM"
+      },
+      {
+        "key": "Institution",
+        "type": "str",
+        "defaultValue": "山东大学"
+      }
+     ]
+  },
+  "model_mode": [
+    "predict"
+  ],
+  "model_name": "WaterPollutionCharacteristic",
+  "model_type": "script",
+  "model_title": "水污染特征图谱匹配",
+  "model_language": "python",
+  "resource_config": {
+    "cpu": 2,
+    "gpu": 1,
+    "memory": "4GB"
+  },
+  "model_description": "水污染特征图谱匹配。模型通过特征选择和数据处理，识别影响水质的关键因素，进而预测和评估污染源对水质的影响。这种分析不仅有助于理解水质变化的原因，还能为水资源管理和污染控制提供科学依据。",
+  "parameter_delivery": "python_style",
+  "environment_variables": {
+    "AI_DATASET": "http://114.116.226.27:30094/pie_training_dataset/"
+  }
+}
